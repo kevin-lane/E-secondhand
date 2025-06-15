@@ -1,0 +1,67 @@
+{
+  "ads": [
+    {
+      "id": 1,
+      "name": "iPhone 16",
+      "description": "A hardly used iPhone 16 in excellent condition",
+      "price": 8500,
+      "seller": "Elsa Lindh",
+      "image": "https://inspireonline.in/cdn/shop/files/iPhone_16_Teal_PDP_Image_Position_1__en-IN_6aed3712-113a-4579-8a71-41c02aa0003c.jpg?v=1727247732&width=250",
+      "category": "Electronics"
+    },
+    {
+      "id": 2,
+      "name": "Samsung TV",
+      "description": "An TV that still works",
+      "price": 2500,
+      "seller": "Kevin Lane",
+      "image": "https://sm.pcmag.com/t/pcmag_uk/review/s/samsung-65/samsung-65-inch-s95d-4k-oled-tv_zcfm.250.jpg",
+      "category": "Electronics"
+    },
+        {
+      "id": 3,
+      "name": "A white tshirt",
+      "description": "A barely used tshirt",
+      "price": 200,
+      "seller": "Robert",
+      "image": "https://5.imimg.com/data5/ANDROID/Default/2021/8/RX/AO/JT/105673588/product-jpeg-250x250.jpg",
+      "category": "Clothes"
+    },
+        {
+      "id": 4,
+      "name": "Volvo V90",
+      "description": "Selling my precious Volvo V90 which has not gone so far",
+      "price": 250000,
+      "seller": "Johan Åsberg",
+      "image": "https://www.media.volvocars.com/image/low/203172/1_9/5?previewkey=",
+      "category": "Cars"
+    },
+    {
+      "id": 5,
+      "name": "A double bed",
+      "description": "A double bed in good condition",
+      "price": 2000,
+      "seller": "Sara Anderberg",
+      "image": "https://d2q01ftr6ua4w.cloudfront.net/assets/images/3a192f0980cbaca49c702a47f9d749c3e2ed3895.jpeg?t=1614431327",
+      "category": "Home"
+    },
+    {
+      "id": 6,
+      "name": "3 seated sofa",
+      "description": "A nice and cosy beige sofa",
+      "price": 2700,
+      "seller": "Ali Hussain",
+      "image": "https://lindenytt.com/app/uploads/2019/01/49577959_2778562002368442_1149533423950364672_n.jpg",
+      "category": "Home"
+    },
+    {
+      "id": 7,
+      "name": "Fishing rod",
+      "description": "Selling my fishing rod which is still useable",
+      "price": 350,
+      "seller": "Mattias",
+      "image": "https://img.tradera.net/images/915/600479915_9319e52a-cff2-44ac-b363-03c9aa0cdbf5.jpg",
+      "category": "Hobbies"
+    }
+  ]
+}
