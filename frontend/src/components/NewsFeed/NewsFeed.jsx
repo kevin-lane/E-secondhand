@@ -13,7 +13,6 @@ function NewsFeed() {
   }, [])
 
 console.log(ads);
-
   return (
     <>
       <h3 className="text-4xl font-bold text-left ml-8 mt-12">News Feed</h3>
@@ -21,14 +20,16 @@ console.log(ads);
         {ads.map(ad => {
           console.log(ad);
           return(
-            <AdCard
-              id={ad.id}
-              title={ad.name}
-              description={ad.description}
-              price={ad.price}
-              seller={ad.seller}
-              image={ad.image}
-            />
+            <>
+              <AdCard
+                id={ad.id}
+                title={ad.name}
+                description={ad.description}
+                price={ad.price}
+                seller={ad.seller}
+                image={ad.image}
+              />
+            </>
           )
         })}
       </section>

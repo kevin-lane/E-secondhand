@@ -1,16 +1,20 @@
 import './App.css'
-import NavBar from './components/Navbar/navBar'
-import Banner from './components/Banner/Banner'
-import Categories from './components/Categories/Categories'
-import NewsFeed from './components/NewsFeed/NewsFeed'
+import { BrowserRouter, Routes, Route, useParams } from 'react-router-dom';
+import NavBar from './components/Navbar/navBar';
+import Home from './pages/Home';
+import AdDetail from './pages/AdDetail';
 
 function App() {
+
   return (
     <>
       <NavBar />
-      <Banner />
-      <Categories />
-      <NewsFeed />
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path=':id' element={<AdDetail />} />
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }
