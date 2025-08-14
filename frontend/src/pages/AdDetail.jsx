@@ -1,26 +1,40 @@
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import SendIcon from "../components/Icons/SendIcon";
 import CardIcon from "../components/Icons/CardIcon";
 import PaymentDeliveryForm from "../components/Modals/PaymentDeliveryForm";
+import { IsLoggedInContext } from "../context/IsLoggedInContext";
+import LoginPrompt from "../components/Modals/LoginPrompt";
+import axios from "axios";
+
 
 function AdDetail(props) {
   console.log(props.id);
   const { id } = useParams();
   const [ad, setAd] = useState(null);
   const [readyToOrder, setReadyToOrder] = useState(false);
+  const {isLoggedIn, setIsLoggedIn} = useContext(IsLoggedInContext);
 
   useEffect(() => {
-    fetch('ads.json')
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data.ads);
-        const foundAd = data.ads.find((item) => item.id == id);
-        setAd(foundAd);
-        console.log(foundAd);
+    // fetch('ads.json')
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     console.log(data.ads);
+    //     const foundAd = data.ads.find((item) => item.id == id);
+    //     setAd(foundAd);
+    //     console.log(foundAd);
 
+    //   });
+      axios.get("http://localhost:4000/items")
+      .then(response => {
+        const selectedAd = response.data.find((item) => item._id == id);
+        console.log(selectedAd);
+        setAd(selectedAd);
       })
-  }, [id]);
+      .catch((err) => console.error("Error loading item", err))
+
+    }, [id]);
+    console.log(ad);
 
   if (!ad) return <p>Loading...</p>;
 
@@ -31,23 +45,25 @@ function AdDetail(props) {
       <section>
         <img src="https://img.tradera.net/images/915/600479915_9319e52a-cff2-44ac-b363-03c9aa0cdbf5.jpg" alt="Iphone" width={500} />
       </section>
+      <section>
+        <PaymentDeliveryForm />
+      </section>
       <section className="p-12">
-        <h1>{ad.name}</h1>
+        <h1>{ad.title}</h1>
         <p>{ad.description}</p>
         <strong>{ad.price}:-</strong>
-        <p>Seller: {ad.seller}</p>
+        <p>Seller: {ad.seller.fullName}</p>
         <button className="m-4 p-3 border rounded bg-[#953A3A] text-white">Buy now</button>
         <button className="m-4 p-3 border rounded border-black">Contact seller</button>
       </section>
 
       <article className="block">
         <section className="p-6 m-6 border-2">
-          <p className="mb-4">Chat with {ad.seller}</p>
+          <p className="mb-4">Chat with {ad.seller.fullName}</p>
           <hr></hr>
-          <aside className="bg-white w-64 h-64">
-            <p className="p-8">
-            Please write your message to {ad.seller}
-            </p>
+          <aside className="bg-white w-64 h-64 inline-block">
+            {isLoggedIn ? <p className="p-8">Please write your message to {ad.seller}</p> : <LoginPrompt />
+            }
           </aside>
           <hr></hr>
           <input className="border-2 border-gray-600 rounded-xl p-2 mt-8 mr-2" placeholder="Write your message here"></input>

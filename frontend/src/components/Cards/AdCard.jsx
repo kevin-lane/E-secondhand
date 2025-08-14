@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom';
 
 function AdCard(props) {
   console.log(props.id);
+  console.log(props.seller);
+
 
   return (
     <Link to={`/${props.id}`} key={props.id}>
@@ -10,7 +12,7 @@ function AdCard(props) {
         <strong className='text-2xl'>{props.title}</strong>
         <p className='mt-4 mb-4'>{props.description}</p>
         <strong className='text-xl'>{props.price}:-</strong>
-        <p className='mt-4 mb-4'><span className='bg-red-500 font-semibold text-white p-1 rounded-full mr-2'>{props.seller.charAt(0)}</span>{props.seller}</p>
+        <p className='mt-4 mb-4'><span className='bg-red-500 font-semibold text-white p-1 rounded-full mr-2'>{props.seller}</span>{props.seller}</p>
       </div>
     </Link>
   )

@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import AdCard from '../Cards/AdCard';
+import axios from 'axios';
+
 
 function NewsFeed() {
   const [ads, setAds] = useState([]);
@@ -8,8 +10,14 @@ function NewsFeed() {
     .then(ad => ad.json())
     .then(data => {
       console.log(data.ads);
-      setAds(data.ads)
+      // setAds(data.ads)
+    });
+    axios.get("http://localhost:4000/items")
+    .then(response => {
+      console.log(response.data);
+      setAds(response.data)
     })
+    .catch(err => console.error("Error fetching items", err));
   }, [])
 
 console.log(ads);
@@ -22,11 +30,11 @@ console.log(ads);
           return(
             <>
               <AdCard
-                id={ad.id}
-                title={ad.name}
+                id={ad._id}
+                title={ad.title}
                 description={ad.description}
                 price={ad.price}
-                seller={ad.seller}
+                seller={ad.seller.fullName}
                 image={ad.image}
               />
             </>
