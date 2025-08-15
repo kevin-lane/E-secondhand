@@ -6,7 +6,6 @@ require("dotenv").config();
 const cookieParser = require("cookie-parser");
 const authRoute = require("./Routes/AuthRoute");
 const itemRoute = require("./Routes/ItemRoute");
-const UserModel = require('./Models/UserModel');
 const orderRoute = require("./Routes/OrderRoute");
 const PORT = 4000;
 const MONGO_URL = process.env.MONGO_URL;
@@ -19,15 +18,6 @@ mongoose.connect(MONGO_URL, {
   console.log("MongoDB is connected successfully")
 })
 .catch((err) => console.error(err));
-
-// UserModel.find()
-//   .then(users => {
-//     console.log(users);
-//   })
-//   .catch(err => {
-//     console.error("Some error: ", err);
-
-//   })
 
 app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);
@@ -49,3 +39,4 @@ app.use(cookieParser());
 app.use(express.json());
 app.use("/", authRoute);
 app.use("/", itemRoute);
+app.use("/", orderRoute);

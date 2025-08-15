@@ -2,6 +2,7 @@ import axios from "axios";
 import { useContext, useState } from "react";
 import { OpenSellItemContext } from "../../context/OpenSellItemContext";
 import { LoggedInUserContext } from "../../context/LoggedInUserContext";
+import { IsLoggedInContext } from "../../context/IsLoggedInContext";
 
 export default function SellItemForm(props) {
   const [title, setTitle] = useState("");

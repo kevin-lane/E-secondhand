@@ -4,7 +4,6 @@ function AdCard(props) {
   console.log(props.id);
   console.log(props.seller);
 
-
   return (
     <Link to={`/${props.id}`} key={props.id}>
       <div className='w-64 h-[28rem] text-left bg-[#F1CBCB] p-4 rounded-lg m-8'>

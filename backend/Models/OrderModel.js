@@ -1,16 +1,8 @@
 const mongoose = require("mongoose");
 
 const orderSchema = new mongoose.Schema({
-  orderTitle: {
-    type: String,
-    required: true
-  },
-  price: {
-    type: String,
-    required: true
-  },
-  category: {
-    type: String,
+  selectedItem: {
+    type: Object,
     required: true
   },
   seller: {

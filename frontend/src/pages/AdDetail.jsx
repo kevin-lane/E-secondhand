@@ -4,6 +4,7 @@ import SendIcon from "../components/Icons/SendIcon";
 import CardIcon from "../components/Icons/CardIcon";
 import PaymentDeliveryForm from "../components/Modals/PaymentDeliveryForm";
 import { IsLoggedInContext } from "../context/IsLoggedInContext";
+import { SelectedItemContext } from "../context/SelectedItemContext";
 import LoginPrompt from "../components/Modals/LoginPrompt";
 import axios from "axios";
 
@@ -14,27 +15,24 @@ function AdDetail(props) {
   const [ad, setAd] = useState(null);
   const [readyToOrder, setReadyToOrder] = useState(false);
   const {isLoggedIn, setIsLoggedIn} = useContext(IsLoggedInContext);
+  const {selectedItem, setSelectedItem} = useContext(SelectedItemContext);
 
   useEffect(() => {
-    // fetch('ads.json')
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     console.log(data.ads);
-    //     const foundAd = data.ads.find((item) => item.id == id);
-    //     setAd(foundAd);
-    //     console.log(foundAd);
-
-    //   });
       axios.get("http://localhost:4000/items")
       .then(response => {
         const selectedAd = response.data.find((item) => item._id == id);
         console.log(selectedAd);
+        setSelectedItem(selectedAd);
         setAd(selectedAd);
+        console.log(selectedItem);
+
       })
       .catch((err) => console.error("Error loading item", err))
 
     }, [id]);
     console.log(ad);
+    console.log(selectedItem);
+
 
   if (!ad) return <p>Loading...</p>;
 

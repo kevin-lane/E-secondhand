@@ -11,6 +11,7 @@ import { OpenSellItemContext } from './context/OpenSellItemContext';
 import { IsLoggedInContext } from './context/IsLoggedInContext';
 import { HasAccountContext } from './context/HasAccountContext';
 import { LoggedInUserContext } from './context/LoggedInUserContext';
+import { SelectedItemContext } from './context/SelectedItemContext';
 import SellItemForm from './components/Modals/SellItemForm';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [hasAccount, setHasAccount] = useState(true);
   const [loggedInUser, setLoggedInUser] = useState({});
+  const [selectedItem, setSelectedItem] = useState({});
   console.log(loggedInUser);
   const createAccount = (event) => {
     setHasAccount(false);
@@ -56,7 +58,12 @@ function App() {
               <BrowserRouter>
                 <Routes>
                   <Route path='/' element={<Home />} />
-                  <Route path=':id' element={<AdDetail />} />
+                  <Route path=':id' element={
+                    <SelectedItemContext.Provider value={{ selectedItem, setSelectedItem }}>
+                      <AdDetail />
+                    </SelectedItemContext.Provider>
+                  }
+                  />
                 </Routes>
               </BrowserRouter>
             </LoggedInUserContext.Provider>
